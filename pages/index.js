@@ -1,22 +1,47 @@
 import React from "react";
 
 import { Product, FooterBanner, HeroBanner } from "@/components";
-import { client } from "@/lib/client";
+import client from "../lib/client";
 
-const Home = () => {
+const Home = ({ products, banners }) => {
   return (
     <>
-      <HeroBanner />
+    {/* create heroBanner prop with banners data from sanity, and then pass it to HeroBanner */}
+      <HeroBanner heroBanner={banners.length && banners[0]} />
+      {console.log(banners, 'banners')}
       <div className="products-heading">
-        <h2>Best Selling Products</h2>
+        <h2>Bestsellers</h2>
         <p>Speakers with many variations</p>
       </div>
       <div className="products-container">
-        {["Product 1", "Product 2"].map((product) => product)}
+        {products?.map((product) => <Product key={product._id} product={product}/>)}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={banners && banners[0]} />
     </>
   );
 };
+
+
+// get product and banner details from sanity
+// getServerSideProps
+// check groq cheat sheet in sanity docs
+export const getServerSideProps = async () => {
+  const productQuery = '*[_type == "product"]';
+  const bannerQuery = '*[_type == "banner"]';
+
+  const [products, banners] = await Promise.all([
+    client.fetch(productQuery),
+    client.fetch(bannerQuery),
+  ]);
+
+  return {
+    props: {
+      products,
+      banners,
+    },
+  };
+};
+
+
 
 export default Home;
