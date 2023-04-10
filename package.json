@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.21.4",
+    "@portabletext/react": "^2.0.2",
     "@sanity/client": "^5.4.2",
     "@sanity/image-url": "^1.0.2",
     "@sanity/schema": "^3.8.3",
@@ -18,6 +19,7 @@
     "babel": "^6.23.0",
     "canvas-confetti": "^1.6.0",
     "next": "13.3.0",
+    "next-sanity": "^4.1.6",
     "next-sanity-image": "^6.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
