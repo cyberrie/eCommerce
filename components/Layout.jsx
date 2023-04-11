@@ -9,7 +9,8 @@ const Layout = ({children}) => {
   return (
     <div className='layout'>
       <Head>
-        <title>Audioverse</title>
+        <title>AudioVerse</title>
+        <link rel="shortcut icon" href="/audioverse-fav.png" type="image/x-icon" />
       </Head>
       <header>
         <Navbar />
