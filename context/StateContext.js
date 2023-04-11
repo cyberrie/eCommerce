@@ -49,6 +49,23 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
 
+  // delete cart item btn
+  const onDelete = (product) => {
+    foundProduct = cartItems.find((item) => item._id === product._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product._id);
+
+    setTotalPrice(
+      (prevTotalPrice) =>
+        prevTotalPrice - foundProduct.price * foundProduct.quantity
+    );
+
+    setTotalQuantities(
+      (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
+    );
+
+    setCartItems(newCartItems);
+  };
+
   // cart items logic
   // need product id and index to be able to inc/dec
   // then increment/decrement
@@ -57,7 +74,7 @@ export const StateContext = ({ children }) => {
 
     // newCartItems to not mutate the state
     // splice used first but that didn't work as it mutated the array
-    const newCartItems = cartItems.filter((item) => item._id !== id);
+    // const newCartItems = cartItems.filter((item) => item._id !== id);
 
     if (value === "inc") {
       const updatedData = cartItems.map((item) =>
@@ -97,6 +114,7 @@ export const StateContext = ({ children }) => {
       value={{
         showCart,
         setShowCart,
+        onDelete,
         cartItems,
         totalPrice,
         totalQuantities,
