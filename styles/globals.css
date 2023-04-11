@@ -1,12 +1,21 @@
+:root {
+  --red: crimson;
+}
+
 html,
 body, * {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Oxygen, sans-serif;
   box-sizing: border-box;
-
+ 
 }
+
+body {
+  background: rgb(197,238,168);
+  background: linear-gradient(90deg, rgba(197,238,168,1) 4%, rgba(245,247,249,1) 100%);
+}
+
 ::-webkit-scrollbar {
   width: 0px;
 }
@@ -20,6 +29,7 @@ a {
 max-width: 1400px; 
 margin: auto;
 width: 100%;
+
 
 }
 .layout{
@@ -36,7 +46,7 @@ width: 100%;
   font-size: 29px;
   font-weight: 600;
   margin: 60px 0px;
-  color: #f02d34;
+  color: var(--red);
 }
 .marquee {
   position: relative;
@@ -61,14 +71,10 @@ width: 100%;
 }
 
  span.text-red {
-    -webkit-text-stroke: 1px #f02d34;
+    -webkit-text-stroke: 1px var(--red);
     margin-left: 6px;
 }
-.logo{
-  color: gray;
-  font-size: 18px;
 
-}
 .cart-icon{
   font-size: 25px;
   color: gray;
@@ -86,7 +92,7 @@ width: 100%;
   right: -8px;
   font-size: 12px;
   color: #eee;
-  background-color: #f02d34;
+  background-color: var(--red);
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -106,7 +112,7 @@ width: 100%;
  cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
- color: #324d67;
+ color: black;
 
 }
 .product-card:hover{
@@ -114,7 +120,7 @@ width: 100%;
 }
 .product-image{
   border-radius: 15px;
- background-color: #ebebeb;
+ background-color: whitesmoke;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
 }
@@ -130,21 +136,22 @@ width: 100%;
 
 .hero-banner-container{
   padding: 100px 40px;
-  background-color: #dcdcdc;
+  background-color: whitesmoke;
+  border: 1px solid rgb(100, 246, 100);
   border-radius: 15px;
   position: relative;
   height: 500px;
   line-height: 0.9; 
   width: 100%;
-
 }
+
 .hero-banner-container .beats-solo{
   font-size: 20px;
 }
 .hero-banner-container button{
-   border-radius: 15px;
+   border-radius: 5px;
   padding: 10px 16px;
-  background-color: #f02d34;
+  background-color: var(--red);
   color: white;
   border: none;
   margin-top: 40px;
@@ -154,12 +161,17 @@ width: 100%;
   z-index:10000 !important;
 }
 
+.hero-banner-container button:hover, .banner-desc button:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
 .hero-banner-container h3{
   font-size: 4rem;
   margin-top: 4px;
 }
 .hero-banner-container h1{
-  color: white;
+  color: black;
   font-size: 10em;
   margin-left: -20px;
   text-transform: uppercase;
@@ -212,24 +224,25 @@ text-align: end;
 }
 .footer-banner-container{
   padding: 100px 40px;
-  background-color: #f02d34;
+  background-color: whitesmoke;
   border-radius: 15px;
   position: relative;
   height: 400px;
   line-height: 1; 
-  color: white;
+  color: black;
   width: 100%;
   margin-top: 120px;
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
 .banner-desc{
   display: flex ;
   justify-content: space-between;
 }
 .banner-desc button{
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 10px 16px;
-  background-color: white;
-  color: red;
+  background-color: crimson;
+  color: white;
   border: none;
   margin-top: 40px;
   font-size: 18px;
@@ -287,7 +300,7 @@ text-align: end;
 }
 
 .footer-container{
-  color: #324d67;
+  color: black;
   text-align: center;
   margin-top: 20px;
   padding: 30px 10px;
@@ -355,7 +368,7 @@ padding: 20px 10px;
   display: flex;
   justify-content: space-between;
   width: 350px;
-   color: #324d67;
+   color: black;
 
 }
 .item-desc .bottom{
@@ -399,13 +412,13 @@ padding: 30px 65px;
   width: 100%;
   max-width: 400px;
   padding: 10px 12px;
-  border-radius: 15px;
+  border-radius: 10px;
   border: none;
   font-size: 20px;
   margin-top: 10px;
   margin-top: 40px;
   text-transform: uppercase;
-  background-color: #f02d34;
+  background-color: crimson;
   color: #fff;
   cursor: pointer;
     transform: scale(1, 1);
@@ -419,7 +432,7 @@ padding: 30px 65px;
  gap: 40px;
  margin: 40px;
  margin-top: 60px;
- color: #324d67;
+ color: black;
 
 }
 
@@ -434,6 +447,7 @@ padding: 30px 65px;
 }
 .product-detail-image:hover{
   background-color: #f02d34;
+  cursor: pointer;
 
 }
 .small-images-container{
@@ -466,6 +480,7 @@ padding: 30px 65px;
 .product-detail-desc p{
   margin-top: 10px;
 }
+
 .reviews p{
   color: #324d67;
   margin-top: 0px;
@@ -551,7 +566,7 @@ padding: 6px;
 .maylike-products-wrapper h2{
   text-align: center;
   margin: 50px;
-  color: #324d67;
+  color: black;
 
   font-size: 28px;
 }
@@ -563,7 +578,7 @@ padding: 6px;
 }
 .max-qty{
   font-weight: 500;
-  color: #f02d34;
+  color: crimson;
 }
 .success-wrapper, .cancel-wrapper{
   background-color: white;
@@ -724,7 +739,7 @@ margin-top: 160px;
 }
 .flex h5{
   font-size: 16px;
-   color: #324d67;
+   color: black;
 }
 .flex h4{
   font-size: 16px;

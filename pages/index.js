@@ -10,8 +10,7 @@ const Home = ({ products, banners }) => {
       <HeroBanner heroBanner={banners.length && banners[0]} />
       {console.log(banners, 'banners')}
       <div className="products-heading">
-        <h2>Bestsellers</h2>
-        <p>Speakers with many variations</p>
+        <h2>Bestsellers:</h2>
       </div>
       <div className="products-container">
         {products?.map((product) => <Product key={product._id} product={product}/>)}
