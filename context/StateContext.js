@@ -11,7 +11,11 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
-  // add to cart logic
+  //global variables
+  let foundProduct; // product we want to update
+  // let index; // index of that product
+
+  // add-to-cart logic
   const onAdd = (product, quantity) => {
     //check if the item we're trying to add already in the cart
     const checkProductInCart = cartItems.find(
@@ -45,6 +49,35 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
 
+  // cart items logic
+  // need product id and index to be able to inc/dec
+  // then increment/decrement
+  const toggleCartItemQuantity = (id, value) => {
+    foundProduct = cartItems.find((item) => item._id === id);
+
+    // newCartItems to not mutate the state
+    // splice used first but that didn't work as it mutated the array
+    const newCartItems = cartItems.filter((item) => item._id !== id);
+
+    if (value === "inc") {
+      const updatedData = cartItems.map((item) =>
+        item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setCartItems(updatedData);
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+    } else if (value === "dec") {
+      if (foundProduct.quantity > 1) {
+        const updatedData = cartItems.map((item) =>
+          item._id === id ? { ...item, quantity: item.quantity - 1 } : item
+        );
+        setCartItems(updatedData);
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+      }
+    }
+  };
+
   // increase qty
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
@@ -63,6 +96,7 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{
         showCart,
+        setShowCart,
         cartItems,
         totalPrice,
         totalQuantities,
@@ -70,6 +104,7 @@ export const StateContext = ({ children }) => {
         incQty,
         decQty,
         onAdd,
+        toggleCartItemQuantity,
       }}
     >
       {children}
@@ -77,4 +112,5 @@ export const StateContext = ({ children }) => {
   );
 };
 
+//export
 export const useStateContext = () => useContext(Context);
