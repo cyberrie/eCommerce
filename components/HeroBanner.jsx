@@ -1,9 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "@/lib/client";
+// import { useEffect } from "react";
 
 // pass heroBanner as props and access details below where applicable
 const HeroBanner = ({ heroBanner }) => {
+
+  // useEffect(() => {
+  //   console.log("heroBanner.image:", heroBanner.image);
+  //   console.log("heroBanner:", heroBanner);
+  // }, []);
+
+
   return (
     <div className="hero-banner-container">
       <div>
@@ -13,7 +21,7 @@ const HeroBanner = ({ heroBanner }) => {
         <img src={urlFor(heroBanner.image)} alt="headphones" className="hero-banner-image" />
 
         <div>
-          <Link href={`/product/ID${heroBanner.product}`}>
+          <Link href={`/product/${heroBanner.product}`}>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
           <div className="desc">
