@@ -853,4 +853,27 @@ margin-top: 160px;
   font-size: 39px;
 }
 
+.hero-banner-image {
+    width: 67%;
+    height: 52%;
+    top: 21%;
+    right: -6%;
+}
+
+.hero-banner-container {
+    height: 539px;
+}
+
+.footer-banner-image {
+    width: 67%;
+    left: 37%;
+    top: 2%;
+    height: 52%;
+}
+
+.footer-banner-container {
+    height: 539px;
+    margin-top: 80px;
+}
+
 }
